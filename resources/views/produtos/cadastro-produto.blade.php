@@ -1,11 +1,13 @@
 @extends('layouts.main')
 @section('title', 'Produtos')
 @section('content')
+
     <div class="jumbotron jumbotron-fluid text-center text-dark pt-0">
         @if (session('msg'))
             <div class="alert alert-success">
                 <p>Produto cadastrado com sucesso!</p>
             </div>
+
             {{ session('msg') == false }}
         @endif
         <h2 class="pt-5 text-dark mt-4">Cadastrar Produto</h2>
@@ -27,6 +29,7 @@
                             <option value={{ $categoria->id }}>{{ $categoria->nome }}</option>
                         @endforeach
                     </select>
+
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
             </form>

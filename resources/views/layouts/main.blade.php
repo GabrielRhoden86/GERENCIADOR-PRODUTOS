@@ -29,10 +29,10 @@
                         <li class="nav-item">
                             <a href="/categorias" class="nav-link">Categorias</a>
                         </li>
-                    @endauth
-
-                    @auth
-                        <li class="nav-item mr-4">
+                        <li class="nav-item">
+                            <a href="/apiHome" class="nav-link">APIs</a>
+                        </li>
+                        @endauth @auth <li class="nav-item mr-4">
                             <form action="/logout" method="POST">
                                 @csrf
                                 <a href="/logout" method="POST" class="nav-link"

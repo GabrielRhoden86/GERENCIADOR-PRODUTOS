@@ -15,6 +15,8 @@ class ProdutoController extends Controller
 
     public function index()
     {
+
+
         $id = auth()->id();
         $produtos = Produto::where('usuario_id', $id)->get();
         return view('produtos.index', ["produtos" => $produtos]);
@@ -40,6 +42,9 @@ class ProdutoController extends Controller
         $usuario = auth()->user();
         $produto->usuario_id = $usuario->id;
         $produto->save();
+
+        $categorias = Categoria::all();
+
 
         return redirect("produtos/cadastro-produto")->with('msg', true);
     }

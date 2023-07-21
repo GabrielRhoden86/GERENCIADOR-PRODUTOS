@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,5 @@ Route::get('/categorias/cadastro-categoria', [CategoriaController::class, 'creat
 Route::post('/categorias/cadastro-categoria', [CategoriaController::class, 'store'])->middleware('auth');
 Route::get('/categorias/editar-categoria/{id}', [CategoriaController::class, 'edit'])->middleware('auth');
 Route::put('/categorias/editar-categoria/{id}', [CategoriaController::class, 'update'])->middleware('auth');
+
+Route::get('/apiHome', [ApiController::class, 'index'])->middleware('auth');

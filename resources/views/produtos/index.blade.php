@@ -55,6 +55,7 @@
                         </tr>
                     </tbody>
                 @endforeach
+
             </table>
         </div>
         <div id="myApi" class="w-50"></div>

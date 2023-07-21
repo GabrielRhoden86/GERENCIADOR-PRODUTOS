@@ -13,7 +13,10 @@ use App\Services\ValidaUsuarioApi;
 
 class ApiController extends Controller
 {
-
+    public function index()
+    {
+        return view('apiHome');
+    }
     /**
      * @OA\Get(
      *     path="/api/produtos",
