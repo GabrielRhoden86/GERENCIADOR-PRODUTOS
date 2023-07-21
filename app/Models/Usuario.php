@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Produto;
 
 class Usuario extends Authenticatable
 {
@@ -25,7 +26,7 @@ class Usuario extends Authenticatable
      */
 
 
-     protected $table = 'users';
+    protected $table = 'users';
     //  public $timestamps = false;
 
     protected $fillable = [
@@ -33,6 +34,12 @@ class Usuario extends Authenticatable
         'email',
         'password',
     ];
+
+
+    public function produto()
+    {
+        return $this->hasMany(Produto::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,21 +53,17 @@ class Usuario extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
+    //@var array<string, string>
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+
+    // @var array<int, string>
+
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
 }

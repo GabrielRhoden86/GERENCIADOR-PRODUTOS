@@ -9,4 +9,9 @@ class Categoria extends Model
     protected $table = 'Categoria';
     public $timestamps = false;
     protected $fillable = ['nome'];
+
+    public function categoria()
+    {
+        return $this->hasMany(Produto::class);
+    }
 }

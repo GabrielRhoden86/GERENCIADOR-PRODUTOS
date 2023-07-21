@@ -16,6 +16,11 @@ header {
 }
 
 /* nav bar */
+.antialiased .user {
+    margin-right: 60%;
+    margin-top: 2px;
+}
+
 #navbar {
     justify-content: space-between;
     background-color: white;
@@ -30,6 +35,25 @@ header {
     background-color: transparent;
 }
 
+/* categorias */
+.title-categoria h2 {
+    margin-left: 14% !important;
+}
+.edit-col,
+.delete-col {
+    width: 50px;
+    padding: 0;
+}
+
+.icon-add {
+    margin-right: 15%;
+    margin-top: 4%;
+}
+
+.icon-add-categoria {
+    margin-right: 11%;
+    margin-top: 4%;
+}
 /* footer */
 footer {
     text-align: center;
@@ -39,14 +63,4 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-}
-
-/* pag produtos */
-.edit-col,
-.delete-col {
-    width: 60px !important;
-}
-
-footer {
-    margin-bottom: 0;
 }

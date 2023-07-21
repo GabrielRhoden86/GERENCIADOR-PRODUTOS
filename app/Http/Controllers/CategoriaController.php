@@ -3,62 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categoria;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+
+        return view("Categoria", ["categorias" => $categorias]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('cadastro-categoria');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria;
+        $categoria->nome = $request->nome;
+        $categoria->save();
+        return redirect("/cadastro-categoria")->with('msg', true);
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        return view("editar-categoria", ['categoria' => $categoria]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+        $event = Categoria::findOrFail($request->id)->update($data);
+        return redirect("/categoria")->with('msgUpdate', true);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $event = Categoria::findOrFail($id)->delete();
+        return redirect("/categoria")->with('msgDestroy', true);
     }
 }

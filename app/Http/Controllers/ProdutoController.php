@@ -3,62 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produto;
+use App\Models\Usuario;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('produtos');
+        $produtos = Produto::all();
+
+        return view('produtos', ["produtos" => $produtos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('cadastro-produto');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // $usuario = new Usuario();
+        $produto = new Produto;
+        $produto->nome = $request->nome;
+        $produto->valor = $request->valor;
+        $produto->usuario_id = $request->valor;
+        $produto->categoria_id = $request->categoria_id;
+        $usuario = auth()->user();
+        $produto->usuario_id = $usuario->id;
+        $produto->save();
+
+        return redirect("/cadastro-produtos")->with('msg', true);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function show()
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        return view("editar-produto", ['produto' => $produto]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $data = $request->all();
+        $event = Produto::findOrFail($request->id)->update($data);
+        return redirect("/categoria")->with('msgEdit', true);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $event = Produto::findOrFail($id)->delete();
+        return redirect("/produtos")->with('msgDestroy', true);
     }
 }

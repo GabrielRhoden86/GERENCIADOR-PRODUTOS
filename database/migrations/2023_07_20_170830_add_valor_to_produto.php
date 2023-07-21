@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -12,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produto', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->foreignId('usuario_id')->references('id')->on('users');
-            $table->foreignId('categoria_id')->references('id')->on('categoria');
+        Schema::table('produto', function (Blueprint $table) {
+            $table->decimal('valor', 8, 2)->after('nome');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produto');
+        Schema::table('produto', function (Blueprint $table) {
+            $table->dropColumn('valor', 8, 2)->after('nome');
+        });
     }
 };
