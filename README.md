@@ -1,4 +1,4 @@
-    Para habiitar o sistema siga as instruções no arquivo 'readme.md' que encontra se dentro do diretório confi na raiz do projeto 
+    Para habiitar o sistema siga as instruções no arquivo 'readme.md' que encontra se dentro do diretório config na raiz do projeto 
 
 
 
