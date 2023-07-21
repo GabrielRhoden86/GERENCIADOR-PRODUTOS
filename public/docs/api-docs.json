@@ -1,0 +1,48 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Gerenciador de Produtos - API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/produtos": {
+            "get": {
+                "externalDocs": {
+                    "description": "Link para o endpoint",
+                    "url": "http://localhost:8000/api/produtos"
+                },
+                "operationId": "d44dfe97589a89544793b6309e19834d",
+                "responses": {
+                    "200": {
+                        "description": "Lista de produtos"
+                    }
+                }
+            }
+        },
+        "/api/usuario/{id}": {
+            "get": {
+                "externalDocs": {
+                    "description": "Link para o endpoint",
+                    "url": "http://localhost:8000/api/usuario/{id}"
+                },
+                "operationId": "2c7e904d28089b7a65ae5b54ae965574",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do usuário"
+                    }
+                }
+            }
+        }
+    }
+}
