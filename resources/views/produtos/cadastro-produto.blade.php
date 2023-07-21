@@ -10,7 +10,7 @@
         @endif
         <h2 class="pt-5 text-dark mt-4">Cadastrar Produto</h2>
         <div class="container mt-5 p-2 d-flex justify-content-center">
-            <form action="/cadastro-produtos" method="POST" enctype="multipart/form-data" class="col-md-7">
+            <form action="/produtos/cadastro-produto" method="POST" enctype="multipart/form-data" class="col-md-7">
                 @csrf
                 <div class="form-group">
                     <input type="text" name="nome" class="form-control  " id="nome"
@@ -23,9 +23,9 @@
                 <div class="form-group">
                     <select class="form-control" id="categoria" name="categoria_id">
                         <option>Selecione uma categoria</option>
-                        <option value=4>Alimento</option>
-                        <option value=4>Vestuário</option>
-                        <option value=4>Eletrônico</option>
+                        @foreach ($categorias as $categoria)
+                            <option value={{ $categoria->id }}>{{ $categoria->nome }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>

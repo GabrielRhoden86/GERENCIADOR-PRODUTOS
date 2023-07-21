@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Produtos')
 @section('content')
+
     <div class="jumbotron jumbotron-fluid text-center text-dark pt-0">
         @if (session('msgDestroy'))
             <div class="alert alert-danger">
@@ -10,13 +11,13 @@
         @endif
         @if (session('msgEdit'))
             <div class="alert alert-info">
-                <p>Produto Editado com sucesso!</p>
+                <p>Produto editado com sucesso!</p>
             </div>
             {{ session('msgEdit') == false }}
         @endif
         <div class="d-flex justify-content-end">
             <div class="icon-add">
-                <a title="cadastrar produto" href="/cadastro-produtos">
+                <a title="cadastrar produto" href="/produtos/cadastro-produto">
                     <ion-icon name="add-circle-outline" size="large" color="success"></ion-icon>
                 </a>
             </div>
@@ -42,7 +43,8 @@
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->valor }}</td>
                             <td>{{ $produto->categoria->nome }}</td>
-                            <td><a href="/editar-produto/{{ $produto->id }}" class="btn btn-primary btn-sm">Editar</a></td>
+                            <td><a href="/produtos/editar-produto/{{ $produto->id }}"
+                                    class="btn btn-primary btn-sm">Editar</a></td>
                             <td>
                                 <form action="/produtos/{{ $produto->id }}" method="POST">
                                     @csrf

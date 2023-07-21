@@ -27,7 +27,7 @@
                             <a href="/produtos" class="nav-link">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/categoria" class="nav-link">Categorias</a>
+                            <a href="/categorias" class="nav-link">Categorias</a>
                         </li>
                     @endauth
 
@@ -57,7 +57,7 @@
         @yield('content')
     </main>
     <footer>
-        <small>Geenciar Produtos &copy; 2023</small>
+        <small>Gerenciar Produtos &copy; 2023</small>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>

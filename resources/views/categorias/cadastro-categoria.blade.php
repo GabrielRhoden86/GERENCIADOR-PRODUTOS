@@ -10,7 +10,7 @@
         @endif
         <h2 class="pt-5 text-dark mt-4">Cadastrar Categoria</h2>
         <div class="container mt-5 p-2 d-flex justify-content-center">
-            <form action="/cadastro-categoria" method="POST" enctype="multipart/form-data" class="col-md-7">
+            <form action="/categorias/cadastro-categoria" method="POST" enctype="multipart/form-data" class="col-md-7">
                 @csrf
                 <div class="form-group">
                     <input type="text" class="form-control" name="nome" id="nome"

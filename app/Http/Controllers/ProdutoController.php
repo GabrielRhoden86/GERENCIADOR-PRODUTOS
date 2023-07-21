@@ -4,59 +4,69 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
-use App\Models\Usuario;
+use App\Models\Categoria;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreProdutoRequest;
+use App\Http\Requests\UpdateProdutoRequest;
+
 
 class ProdutoController extends Controller
 {
 
     public function index()
     {
-        $produtos = Produto::all();
-
-        return view('produtos', ["produtos" => $produtos]);
+        $id = auth()->id();
+        $produtos = Produto::where('usuario_id', $id)->get();
+        return view('produtos.index', ["produtos" => $produtos]);
     }
 
     public function create()
     {
-        return view('cadastro-produto');
+        $categorias = Categoria::all();
+
+        return view('produtos.cadastro-produto', ['categorias' => $categorias]);
     }
 
-    public function store(Request $request)
+    //StoreProdutoRequest  valida os campos dos formuário
+    public function store(StoreProdutoRequest $request)
     {
-        // $usuario = new Usuario();
-        $produto = new Produto;
-        $produto->nome = $request->nome;
-        $produto->valor = $request->valor;
-        $produto->usuario_id = $request->valor;
-        $produto->categoria_id = $request->categoria_id;
+        $data = [
+            'nome' => trim(strip_tags($request->input('nome'))),
+            'valor' => trim(strip_tags($request->input('valor'))),
+            'categoria_id' => trim(strip_tags($request->input('categoria_id'))),
+        ];
+
+        $produto = new Produto($data);
         $usuario = auth()->user();
         $produto->usuario_id = $usuario->id;
         $produto->save();
 
-        return redirect("/cadastro-produtos")->with('msg', true);
+        return redirect("produtos/cadastro-produto")->with('msg', true);
     }
 
-
-    public function show()
-    {
-    }
-
+    //Retorna a view e os arrays produto e categoria
     public function edit($id)
     {
+        $categorias = Categoria::all();
         $produto = Produto::findOrFail($id);
-        return view("editar-produto", ['produto' => $produto]);
+        return view("produtos.editar-produto", ['produto' => $produto, "categorias" => $categorias]);
     }
 
-    public function update(Request $request)
+    public function update(UpdateProdutoRequest $request)
     {
-        $data = $request->all();
-        $event = Produto::findOrFail($request->id)->update($data);
-        return redirect("/categoria")->with('msgEdit', true);
+        $data = [
+            'nome' => trim(strip_tags($request->input('nome'))),
+            'valor' => trim(strip_tags($request->input('valor'))),
+            'categoria_id' => trim(strip_tags($request->input('categoria_id'))),
+        ];
+
+        Produto::findOrFail($request->id)->update($data);
+        return redirect("/produtos")->with('msgEdit', true);
     }
 
     public function destroy($id)
     {
-        $event = Produto::findOrFail($id)->delete();
+        Produto::findOrFail($id)->delete();
         return redirect("/produtos")->with('msgDestroy', true);
     }
 }

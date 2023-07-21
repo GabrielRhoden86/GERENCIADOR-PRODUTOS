@@ -4,7 +4,7 @@
     <div class="jumbotron jumbotron-fluid text-center text-dark pt-0">
         @if (session('msgDestroy'))
             <div class="alert alert-danger">
-                <p>Produto excluido com sucesso!</p>
+                <p>Categoria excluida com sucesso!</p>
             </div>
             {{ session('msgDestroy') == false }}
         @endif
@@ -17,7 +17,7 @@
             @endif
             <div class="d-flex justify-content-end">
                 <div class="icon-add-categoria">
-                    <a title="cadastrar categoria" href="/cadastro-categoria">
+                    <a title="cadastrar categoria" href="/categorias/cadastro-categoria">
                         <ion-icon name="add-circle-outline" size="large" color="success"></ion-icon>
                     </a>
                 </div>
@@ -40,11 +40,11 @@
                             <tr>
                                 <td scropt="row">{{ $loop->index + 1 }}</td>
                                 <td>{{ $categoria->nome }}</td>
-                                <td><a href="/editar-categoria/{{ $categoria->id }}"
+                                <td><a href="/categorias/editar-categoria/{{ $categoria->id }}"
                                         class="btn btn-primary btn-sm">Editar</a>
                                 </td>
                                 <td>
-                                    <form action="/categoria/{{ $categoria->id }}" method="POST">
+                                    <form action="/categorias/{{ $categoria->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm" href="#">Excluir</button>

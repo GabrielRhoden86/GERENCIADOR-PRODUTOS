@@ -4,51 +4,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreCategoriaRequest;
+use App\Http\Requests\UpdateCategoriaRequest;
+
 
 class CategoriaController extends Controller
 {
 
-
     public function index()
     {
         $categorias = Categoria::all();
-
-        return view("Categoria", ["categorias" => $categorias]);
+        return view("categorias.index", ["categorias" => $categorias]);
     }
-
 
     public function create()
     {
-        return view('cadastro-categoria');
+        return view('categorias.cadastro-categoria');
     }
 
-    public function store(Request $request)
+
+    public function store(StoreCategoriaRequest $request)
     {
-        $categoria = new Categoria;
-        $categoria->nome = $request->nome;
+        $data = [
+            'nome' => trim(strip_tags($request->input('nome'))),
+        ];
+        $validatedData = Validator::make($data, [
+            'nome' => 'required|max:100',
+        ])->validate();
+
+        $categoria = new Categoria($validatedData);
         $categoria->save();
-        return redirect("/cadastro-categoria")->with('msg', true);
-    }
-    public function show(string $id)
-    {
+        return redirect("/categorias/cadastro-categoria")->with('msg', true);
     }
 
     public function edit(string $id)
     {
         $categoria = Categoria::findOrFail($id);
-        return view("editar-categoria", ['categoria' => $categoria]);
+        return view("categorias.editar-categoria", ['categoria' => $categoria]);
     }
 
-    public function update(Request $request, string $id)
+
+    public function update(UpdateCategoriaRequest $request)
     {
-        $data = $request->all();
-        $event = Categoria::findOrFail($request->id)->update($data);
-        return redirect("/categoria")->with('msgUpdate', true);
+        $data = [
+            'nome' => trim(strip_tags($request->input('nome'))),
+        ];
+
+        Categoria::findOrFail($request->id)->update($data);
+        return redirect("/categorias")->with('msgUpdate', true);
     }
+
+
 
     public function destroy($id)
     {
-        $event = Categoria::findOrFail($id)->delete();
-        return redirect("/categoria")->with('msgDestroy', true);
+        Categoria::findOrFail($id)->delete();
+        return redirect("/categorias")->with('msgDestroy', true);
     }
 }
