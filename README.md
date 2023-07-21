@@ -1,4 +1,4 @@
-    <h2>Para habiitar o sistema siga as instruções no arquivo 'readme.md' que encontra se dentro do diretório confi na raiz do projeto </h2>
+    <p>Para habiitar o sistema siga as instruções no arquivo 'readme.md' que encontra se dentro do diretório confi na raiz do projeto </p>
 
 
 
