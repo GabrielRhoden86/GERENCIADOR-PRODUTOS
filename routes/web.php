@@ -24,15 +24,15 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/produtos', [ProdutoController::class, 'index'])->middleware('auth');
-Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy']);
-Route::post('/produtos/cadastro-produto', [ProdutoController::class, 'store']);
+Route::get('/produtos', [ProdutoController::class, 'index'])->middleware('auth')->middleware('auth');
+Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
+Route::post('/produtos/cadastro-produto', [ProdutoController::class, 'store'])->middleware('auth');
 Route::get('/produtos/cadastro-produto', [ProdutoController::class, 'create'])->middleware('auth');
 Route::get('/produtos/editar-produto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
 Route::put('/produtos/editar-produto/{id}', [ProdutoController::class, 'update'])->middleware('auth');
 
 Route::get('/categorias', [CategoriaController::class, 'index'])->middleware('auth');
-Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy']);
+Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->middleware('auth');
 Route::get('/categorias/cadastro-categoria', [CategoriaController::class, 'create'])->middleware('auth');
 Route::post('/categorias/cadastro-categoria', [CategoriaController::class, 'store'])->middleware('auth');
 Route::get('/categorias/editar-categoria/{id}', [CategoriaController::class, 'edit'])->middleware('auth');
