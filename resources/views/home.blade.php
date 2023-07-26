@@ -7,4 +7,10 @@
                 gerenciar e controlar seus produtos de maneira eficiente.</p>
         </div>
     </div>
+
+    {{-- <script>
+        $(document).ready(function() {
+            alert("ok");
+        });
+    </script> --}}
 @endsection

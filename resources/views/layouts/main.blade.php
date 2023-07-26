@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>@yield('title')</title>
+    <link rel="stylesheet" href="/fonts/google-fonts-roboto.css">
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.js') }}"></script>
+    <title>@yield('title', 'Home')</title>
 </head>
 
 <body class="antialiased">
@@ -59,7 +60,6 @@
     <footer>
         <small>Gerenciar Produtos &copy; 2023</small>
     </footer>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 
 </html>

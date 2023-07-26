@@ -7,7 +7,6 @@
             <div class="alert alert-success">
                 <p>Produto cadastrado com sucesso!</p>
             </div>
-
             {{ session('msg') == false }}
         @endif
         @if (count($categorias) < 1)
@@ -34,12 +33,9 @@
                             <option value={{ $categoria->id }}>{{ $categoria->nome }}</option>
                         @endforeach
                     </select>
-
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
-
-
-
         </div>
+
     @endsection

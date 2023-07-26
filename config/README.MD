@@ -1,4 +1,4 @@
-----------------------------Para habilitar o sistema aplique os comando a baixo----------------
+----------------------------Para habilitar o sistema aplique os comandos a baixo----------------
 1 - composer update
 2 - php artisan key:generate
 3 - copy .env.example .env

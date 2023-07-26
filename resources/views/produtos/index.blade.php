@@ -2,25 +2,24 @@
 @section('title', 'Produtos')
 @section('content')
 
-    <div class="jumbotron jumbotron-fluid text-center text-dark pt-0">
-        @if (session('msgDestroy'))
-            <div class="alert alert-danger">
-                <p>Produto excluido com sucesso!</p>
-            </div>
-            {{ session('msgDestroy') == false }}
-        @endif
-        @if (session('msgEdit'))
-            <div class="alert alert-info">
-                <p>Produto editado com sucesso!</p>
-            </div>
-            {{ session('msgEdit') == false }}
-        @endif
-        <div class="d-flex justify-content-end">
-            <div class="icon-add">
-                <a title="cadastrar produto" href="/produtos/cadastro-produto">
-                    <ion-icon name="add-circle-outline" size="large" color="success"></ion-icon>
-                </a>
-            </div>
+    @if (session('msgDestroy'))
+        <div class="alert alert-danger">
+            <p>Produto excluido com sucesso!</p>
+        </div>
+        {{ session('msgDestroy') == false }}
+    @endif
+    @if (session('msgEdit'))
+        <div class="alert alert-info">
+            <p>Produto editado com sucesso!</p>
+        </div>
+        {{ session('msgEdit') == false }}
+    @endif
+
+    <div class="container bg-white mt-5 p-4 text-center">
+        <div class="d-flex justify-content-end mt-5">
+            <a title="cadastrar produto" href="/produtos/cadastro-produto">
+                <img src="/img/add.png" alt="img">
+            </a>
         </div>
 
         <h2 class="">Produtos</h2>
@@ -55,7 +54,6 @@
                         </tr>
                     </tbody>
                 @endforeach
-
             </table>
         </div>
         <div id="myApi" class="w-50"></div>

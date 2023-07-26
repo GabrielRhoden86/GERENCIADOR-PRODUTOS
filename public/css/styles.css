@@ -2,6 +2,7 @@
 
 * {
     font-family: "Roboto";
+    /* border: solid red 1px; */
 }
 
 body {
@@ -36,24 +37,11 @@ header {
 }
 
 /* categorias */
-.title-categoria h2 {
-    margin-left: 8% !important;
-}
-.edit-col,
-.delete-col {
-    width: 50px;
-    padding: 0;
-}
-
-.icon-add {
-    margin-right: 15%;
-    margin-top: 4%;
-}
-
 .icon-add-categoria {
     margin-right: 11%;
     margin-top: 4%;
 }
+
 /* footer */
 footer {
     text-align: center;
