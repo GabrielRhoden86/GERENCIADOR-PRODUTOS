@@ -23,7 +23,7 @@ class ApiController extends Controller
      *     @OA\Response(response="200", description="Lista de produtos"),
      *     externalDocs={
      *         "description": "Link para o endpoint",
-     *         "url": "http://localhost:8000/api/produtos"
+     *         "url": getenv('SERVER_URL') . "/api/produtos"
      *     }
      * )
      */
@@ -62,10 +62,11 @@ class ApiController extends Controller
      *     ),
      *     @OA\ExternalDocumentation(
      *         description="Link para o endpoint",
-     *         url="http://localhost:8000/api/usuario/{id}"
+     *         url= getenv('SERVER_URL') . "/api/usuario/{id}"
      *     )
      * )
      */
+
     public function showUsuario($id)
     {
         $usuarios = Usuario::with('produto.categoria')->where('id', $id)->first();

@@ -14,43 +14,51 @@
 
 <body class="antialiased">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light p-3">
-            <div class="collapse navbar-collapse" id="navbar">
-                <a href="/">
-                    <h5 class="text-decoration-none mb-0 font-weight-bold logo-header">Home</h5>
-                </a>
-                @auth
-                    <span class="user text-muted">Bem-vindo, {{ Auth::user()->name }}!</span>
-                @endauth
-                <ul class="navbar-nav mb-0 ml-1">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav w-100">
+                    <a href="/">
+                        <h5 class="text-decoration-none mb-0 font-weight-bold logo-header ">Home</h5>
+                        <span class="sr-only">(Página atual)</span>
+                    </a>
                     @auth
-                        <li class="nav-item">
-                            <a href="/produtos" class="nav-link">Produtos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/categorias" class="nav-link">Categorias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/apiHome" class="nav-link">APIs</a>
-                        </li>
-                        @endauth @auth <li class="nav-item mr-4">
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <a href="/logout" method="POST" class="nav-link"
-                                    onclick="event.preventDefault();
-                             this.closest('form').submit();">Sair</a>
-                            </form>
-                        </li>
+                        <span class="user ml-3 text-muted">Bem-vindo, {{ Auth::user()->name }}!</span>
                     @endauth
-                    @guest
-                        <li class="nav-item">
-                            <a href="/login" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/register" class="nav-link">Cadastrar</a>
-                        </li>
-                    @endguest
-                </ul>
+                    <ul class="navbar-nav mb-0 d-flex justify-content-end">
+                        @auth
+
+                            <li class="nav-item">
+                                <a href="/produtos" class="nav-link">Produtos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/categorias" class="nav-link">Categorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/apiHome" class="nav-link">APIs</a>
+                            </li>
+                            <li class="nav-item mr-4">
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <a href="/logout" method="POST" class="nav-link"
+                                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">Sair</a>
+                                </form>
+                            </li>
+                        @endauth
+                        @guest
+                            <li class="nav-item ml-3">
+                                <a href="/login" class="nav-link">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/register" class="nav-link">Cadastrar</a>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
