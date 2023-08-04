@@ -8,6 +8,7 @@ class ValidaProdutosApi
     public function validate($data)
     {
         if (!isset($data['id']) || !is_int($data['id'])) {
+
             echo 'O campo id é obrigatório e deve ser sum número inteiro';
         }
 

@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav w-100">
                     <a href="/">
-                        <h5 class="text-decoration-none mb-0 font-weight-bold logo-header ">Home</h5>
+                        <h5 class="text-decoration-none mb-0 font-weight-bold logo-header mt-0">Home</h5>
                         <span class="sr-only">(Página atual)</span>
                     </a>
                     @auth

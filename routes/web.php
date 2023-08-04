@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ApiController;
-
+use App\Http\Controllers\ApiIngestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/produtos', [ProdutoController::class, 'index'])->middleware('auth')->middleware('auth');
+Route::get('/produtos', [ProdutoController::class, 'index'])->middleware('auth');
 Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
 Route::post('/produtos/cadastro-produto', [ProdutoController::class, 'store'])->middleware('auth');
 Route::get('/produtos/cadastro-produto', [ProdutoController::class, 'create'])->middleware('auth');
@@ -39,3 +39,5 @@ Route::get('/categorias/editar-categoria/{id}', [CategoriaController::class, 'ed
 Route::put('/categorias/editar-categoria/{id}', [CategoriaController::class, 'update'])->middleware('auth');
 
 Route::get('/apiHome', [ApiController::class, 'index'])->middleware('auth');
+
+Route::get('api-posts', [ApiIngestionController::class, 'apiIngestion'])->middleware('auth');

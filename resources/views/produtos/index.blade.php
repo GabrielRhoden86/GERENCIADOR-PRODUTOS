@@ -24,37 +24,36 @@
 
         <h2 class="">Produtos</h2>
         <div class="container mt-5 p-2">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Categoria</th>
-                        <th class="w-10">Editar</th>
-                        <th class="w-10">Excluir</th>
-                    </tr>
-                </thead>
-                @foreach ($produtos as $produto)
-                    <tbody>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td scropt="row">{{ $loop->index + 1 }}</td>
-                            <td>{{ $produto->nome }}</td>
-                            <td>{{ $produto->valor }}</td>
-                            <td>{{ $produto->categoria->nome }}</td>
-                            <td><a href="/produtos/editar-produto/{{ $produto->id }}"
-                                    class="btn btn-primary btn-sm">Editar</a></td>
-                            <td>
-                                <form action="/produtos/{{ $produto->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" href="#">Excluir</button>
-                                </form>
-                            </td>
+                            <th scope="col"></th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Categoria</th>
+                            <th class="w-10">Editar</th>
+                            <th class="w-10">Excluir</th>
                         </tr>
-                    </tbody>
-                @endforeach
-            </table>
+                    </thead>
+                    @foreach ($produtos as $produto)
+                        <tbody>
+                            <tr>
+                                <td scropt="row">{{ $loop->index + 1 }}</td>
+                                <td>{{ $produto->nome }}</td>
+                                <td>{{ $produto->valor }}</td>
+                                <td>{{ $produto->categoria->nome }}</td>
+                                <td><a href="/produtos/editar-produto/{{ $produto->id }}"
+                                        class="btn btn-primary btn-sm">Editar</a></td>
+                                <td>
+                                    <form action="/produtos/{{ $produto->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" href="#">Excluir</button>
+                        </tbody>
+                    @endforeach
+                </table>
+            </div>
         </div>
         <div id="myApi" class="w-50"></div>
     @endsection
