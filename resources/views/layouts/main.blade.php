@@ -38,6 +38,9 @@
                                 <a href="/categorias" class="nav-link">Categorias</a>
                             </li>
                             <li class="nav-item">
+                                <a href="/template/email" class="nav-link">Email</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/apiHome" class="nav-link">APIs</a>
                             </li>
                             <li class="nav-item mr-4">
